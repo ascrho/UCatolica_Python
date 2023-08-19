@@ -201,34 +201,36 @@ class Moto():
 def accion(vehiculo, opcion):
     # Completar
     if opcion == 2:  # Acelerar
-        print(str(vehiculo))
-        tiempo = float(input("Indique el tiempo en Horas para acelerar el vehiculo:"))
         if "Automovil" in str(type(vehiculo)):
+            tiempo = float(input("Indique el tiempo en Horas para acelerar el vehiculo:"))
             vehiculo.acelerar(tiempo)
             print(f"Se ha acelerado por {tiempo} horas, llegando a una velocidad de {vehiculo.velocidad} km/h")
         elif "Moto" in str(type(vehiculo)):
+            tiempo = float(input("Indique el tiempo en Horas para acelerar el vehiculo:"))
             vehiculo.acelerar(tiempo)
             print(f"Se ha acelerado por {tiempo} horas, llegando a una velocidad de {vehiculo.velocidad} km/h")
         else:
             print("Vehiculo no encontrado. Intente nuevamente.")
 
     elif opcion == 3:  # Frenar
-        tiempo_frenar = float(input("Indique el tiempo en Horas para frenar el vehiculo:"))
         if "Automovil" in str(type(vehiculo)):
+            tiempo_frenar = float(input("Indique el tiempo en Horas para frenar el vehiculo:"))
             vehiculo.frenar(tiempo_frenar)
             print(f"Se ha frenado por {tiempo_frenar} horas, llegando a una velocidad de {vehiculo.velocidad} km/h")
         elif "Moto" in str(type(vehiculo)):
+            tiempo_frenar = float(input("Indique el tiempo en Segundos para frenar el vehiculo:"))
             vehiculo.frenar(tiempo_frenar)
-            print(f"Se ha frenado por {tiempo_frenar} horas, llegando a una velocidad de {vehiculo.velocidad} km/h")
+            print(f"Se ha frenado por {tiempo_frenar} Segundos, llegando a una velocidad de {vehiculo.velocidad} km/h")
         else:
             print("Vehiculo no encontrado. Intente nuevamente.")
 
     elif opcion == 4:  # Avanzar
-        tiempo_avanzar = float(input("Indique el tiempo en Segundos para frenar el vehiculo:"))
         if "Automovil" in str(type(vehiculo)):
+            tiempo_avanzar = float(input("Indique el tiempo en Segundos para frenar el vehiculo:"))
             vehiculo.avanzar(tiempo_avanzar)
             print(f"Se ha avanzado por {tiempo_avanzar} segundos, llegando a una velocidad de {vehiculo.velocidad} km/h")
         elif "Moto" in str(type(vehiculo)):
+            tiempo_avanzar = float(input("Indique el tiempo en Segundos para frenar el vehiculo:"))
             vehiculo.avanzar(tiempo_avanzar)
             print(f"Se ha avanzado por {tiempo_avanzar} segundos, llegando a una velocidad de {vehiculo.velocidad} km/h")
         else:
