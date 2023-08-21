@@ -8,3 +8,6 @@ Luego se realzian los cambios respectivos, y al finalizar, enviarlo al repositor
 
 error(Another Git process seems to be running in this repository)
 rm -f .git/index.lock
+
+error(Changes not staged for commit:)
+git add .
