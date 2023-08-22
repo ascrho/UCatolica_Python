@@ -1,0 +1,13 @@
+git clone https://github.com/ascrho/UCatolica_Python -> Clonar repositorio remoto
+git remote add UCatolica_Pythonhttps://github.com/ascrho/UCatolica_Python -> Crea la direccion del repositorio 
+git add * y git commit -m "Comentario" -> Crea la branch del repositorio remoto
+git pull UCatolicaPython cato_pyhon --allow-unrelated-histories -> Permite hacer el pull desde el repositorio remoto
+git push UCatolicaPython cato_pyhon -> Envia el repositorio local hacia el repositorio remoto
+
+Luego se realzian los cambios respectivos, y al finalizar, enviarlo al repositorio remoto
+
+error(Another Git process seems to be running in this repository)
+rm -f .git/index.lock
+
+error(Changes not staged for commit:)
+git add .
