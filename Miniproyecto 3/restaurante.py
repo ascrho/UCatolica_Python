@@ -25,7 +25,7 @@ class Restaurante:
         #Lista de clientes
         for cl in range(len(clientes)):
             
-            print("Se dará inicio a la preparación del pedido:")
+            print(f"Se dará inicio a la preparación del pedido de {str(clientes[cl].nombre)[2:-2]}:")
             print()
             
             self.pedido = []
