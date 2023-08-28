@@ -89,7 +89,7 @@ class Cliente(Persona):
         self.calificacion_dif = 0
         
         print()
-        print("A continuación se muestra el detalle de las calificaciones entregadas por cada cliente:")
+        print("A continuación se muestra el detalle de las calificaciones entregadas:")
         
         if len(pedido) < len(self.platos_preferidos) or demora >= 20:
             self.calificacion = self.calificacion / 2
@@ -104,8 +104,8 @@ class Cliente(Persona):
                 self.calificacion_fin = self.calificacion
                 self.calificacion_dif = self.calificacion_ini - self.calificacion_fin
                 
-                print(f"Calificación inicial: {self.calificacion_ini}, {pedido[i].nombre} tiene {pedido[i].calidad} de calidad "+
-                      f"con lo cual se suma 1.5 puntos, Calificación Final: {self.calificacion_fin}.")
+                print(f"Calificación inicial: {round(self.calificacion_ini,2)}, {pedido[i].nombre} tiene {pedido[i].calidad} de calidad "+
+                      f"con lo cual se suma 1.5 puntos, Calificación Final: {round(self.calificacion_fin,2)}.")
 
             elif pedido[i].calidad <= 8:
                 self.calificacion_ini = self.calificacion
@@ -113,8 +113,8 @@ class Cliente(Persona):
                 self.calificacion_fin = self.calificacion
                 self.calificacion_dif = self.calificacion_ini - self.calificacion_fin
                 
-                print(f"Calificación inicial: {self.calificacion_ini}, {pedido[i].nombre} tiene {pedido[i].calidad} de calidad "+
-                      f"con lo cual se restan 3 puntos, Calificación Final: {self.calificacion_fin}.")
+                print(f"Calificación inicial: {round(self.calificacion_ini,2)}, {pedido[i].nombre} tiene {pedido[i].calidad} de calidad "+
+                      f"con lo cual se restan 3 puntos, Calificación Final: {round(self.calificacion_fin,2)}.")
         
         return self.calificacion
 

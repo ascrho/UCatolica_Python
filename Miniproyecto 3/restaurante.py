@@ -25,6 +25,7 @@ class Restaurante:
         #Lista de clientes
         for cl in range(len(clientes)):
             
+            print("------------------------------------------------------------------------------------------------")
             print(f"Se dará inicio a la preparación del pedido de {str(clientes[cl].nombre)[2:-2]}:")
             print()
             
@@ -50,9 +51,9 @@ class Restaurante:
                         break
                 
                 if type(self.cocineros[co].plato).__name__ == "Comestible":
-                    print(f"Se preparo {plato}, calidad: {self.cocineros[co].plato.calidad}. Estado Cocinero: {self.cocineros[co].nombre}, energia ini: {self.energia_ini} fin: {self.energia_fin} dif: {self.energia_dif}.")
+                    print(f"Se preparo {plato}, calidad: {round(self.cocineros[co].plato.calidad,2)}. Estado Cocinero: {self.cocineros[co].nombre}, energia ini: {self.energia_ini} fin: {self.energia_fin} dif: {self.energia_dif}.")
                 elif type(self.cocineros[co].plato).__name__ == "Bebestible":
-                    print(f"Se preparo {plato}, tamaño: {self.cocineros[co].plato.tamano} y calidad: {self.cocineros[co].plato.calidad}. Estado Cocinero: {self.cocineros[co].nombre}, energia ini: {self.energia_ini} fin: {self.energia_fin} dif: {self.energia_dif}.")
+                    print(f"Se preparo {plato}, tamaño: {self.cocineros[co].plato.tamano} y calidad: {round(self.cocineros[co].plato.calidad,2)}. Estado Cocinero: {self.cocineros[co].nombre}, energia ini: {self.energia_ini} fin: {self.energia_fin} dif: {self.energia_dif}.")
             #else:
             #    print(f"{str(clientes[cl].nombre)[2:-2]} ordeno {len(clientes[cl].platos_preferidos)} platos, se prepararon {len(self.pedido)}.") #Permite conocer la cantidad de platos que fueron preparados
                 
@@ -70,13 +71,16 @@ class Restaurante:
 
             clientes[cl].recibir_pedido(self.pedido,self.demora)
             self.calificacion += clientes[cl].calificacion
-            print(f"{str(clientes[cl].nombre)[2:-2]} recibio {len(self.pedido)} platos en su pedido, se demoraron {self.demora} segundos en entregarlo "+
+            print()
+            print(f"{str(clientes[cl].nombre)[2:-2]} recibio {len(self.pedido)} platos en su pedido, se demoraron {round(self.demora,2)} segundos en entregarlo "+
                   f"y califico con {clientes[cl].calificacion}. Calificación Actual: {self.calificacion}.") #Permite conocer la cantidad de platos que fueron preparados
+            print("------------------------------------------------------------------------------------------------")
             print()
         
         print(f"La calificación final resulta de la division de {self.calificacion} entre la cantidad de clientes que fueron {len(clientes)}, "+
               f"dando como resultado {self.calificacion/len(clientes)}.") #Permite conocer la calificación final
         print()
+        print("------------------------------------------------------------------------------------------------")
         print()
         self.calificacion = (self.calificacion/len(clientes))
 
