@@ -22,24 +22,40 @@ class Restaurante:
     #pedido, es una lista de objetos de la clase Bebestible o Comestible
 
     #Repartidor, posee el metodo repartir(pedido) que recibe como argumento una lista de platos.
-
         #Lista de clientes
         for cl in range(len(clientes)):
+            
+            print("Se dará inicio a la preparación del pedido:")
+            print()
+            
             self.pedido = []
             self.demora = 0
             #lista de platos del cliente
             #La variable plato, toma uno a uno los nombres de los platos
+            print(f"{str(clientes[cl].nombre)[2:-2]} ordeno {len(clientes[cl].platos_preferidos)} platos, {clientes[cl].platos_preferidos}.")
+            
             for pf in range(len(clientes[cl].platos_preferidos)):
                 plato = self.platos[clientes[cl].platos_preferidos[pf]]
-
+                
                 #Lista de cocineros
                 for co in range(len(self.cocineros)):
+                    self.energia_ini = 0
+                    self.energia_fin = 0
+                    self.energia_dif = 0
                     if self.cocineros[co].energia > 0:
+                        self.energia_ini = self.cocineros[co].energia
                         self.pedido.append(self.cocineros[co].cocinar(plato)) # Va agregando los platos a medida que se van preparando, siempre que algun cocinero tenga energia
+                        self.energia_fin = self.cocineros[co].energia
+                        self.energia_dif = self.energia_ini - self.energia_fin
                         break
+                
+                if type(self.cocineros[co].plato).__name__ == "Comestible":
+                    print(f"Se preparo {plato}, calidad: {self.cocineros[co].plato.calidad}. Estado Cocinero: {self.cocineros[co].nombre}, energia ini: {self.energia_ini} fin: {self.energia_fin} dif: {self.energia_dif}.")
+                elif type(self.cocineros[co].plato).__name__ == "Bebestible":
+                    print(f"Se preparo {plato}, tamaño: {self.cocineros[co].plato.tamano} y calidad: {self.cocineros[co].plato.calidad}. Estado Cocinero: {self.cocineros[co].nombre}, energia ini: {self.energia_ini} fin: {self.energia_fin} dif: {self.energia_dif}.")
             #else:
             #    print(f"{str(clientes[cl].nombre)[2:-2]} ordeno {len(clientes[cl].platos_preferidos)} platos, se prepararon {len(self.pedido)}.") #Permite conocer la cantidad de platos que fueron preparados
-
+                
         # Una vez los platos de la lista de este cliente fueron cocinados o no, y fueran agregados a la lista pedido, se entregan a algun repartidor con energia
             for rp in range(len(self.repartidores)):
                 if self.repartidores[rp].energia > 0:
@@ -54,13 +70,17 @@ class Restaurante:
 
             clientes[cl].recibir_pedido(self.pedido,self.demora)
             self.calificacion += clientes[cl].calificacion
-            print(f"{str(clientes[cl].nombre)[2:-2]} ordeno {len(clientes[cl].platos_preferidos)} platos y recibio {len(self.pedido)} platos en su pedido, se demoraron {self.demora} segundos en entregarlo y califico con {clientes[cl].calificacion}.") #Permite conocer la cantidad de platos que fueron preparados
-
+            print(f"{str(clientes[cl].nombre)[2:-2]} recibio {len(self.pedido)} platos en su pedido, se demoraron {self.demora} segundos en entregarlo "+
+                  f"y califico con {clientes[cl].calificacion}. Calificación Actual: {self.calificacion}.") #Permite conocer la cantidad de platos que fueron preparados
+            print()
+        
+        print(f"La calificación final resulta de la division de {self.calificacion} entre la cantidad de clientes que fueron {len(clientes)}, "+
+              f"dando como resultado {self.calificacion/len(clientes)}.") #Permite conocer la calificación final
+        print()
+        print()
         self.calificacion = (self.calificacion/len(clientes))
-        #print(f"La calificación final es de {self.calificacion}") Permite conocer la calificación final
 
 ### FIN PARTE 3 #
-
 
 if __name__ == "__main__":
 

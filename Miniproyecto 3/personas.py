@@ -84,15 +84,37 @@ class Cliente(Persona):
     def recibir_pedido(self, pedido, demora):
 
         self.calificacion = 10
-
+        self.calificacion_ini = 0
+        self.calificacion_fin = 0
+        self.calificacion_dif = 0
+        
+        print()
+        print("A continuación se muestra el detalle de las calificaciones entregadas por cada cliente:")
+        
         if len(pedido) < len(self.platos_preferidos) or demora >= 20:
             self.calificacion = self.calificacion / 2
-        
+            self.calificacion_ini = self.calificacion
+            print(f"Se demoraron 20 o mas, por lo cual la calificacion base será de: {self.calificacion}.")
+                
         for i in range(len(pedido)):
+            
             if pedido[i].calidad >= 11:
+                self.calificacion_ini = self.calificacion
                 self.calificacion += 1.5
+                self.calificacion_fin = self.calificacion
+                self.calificacion_dif = self.calificacion_ini - self.calificacion_fin
+                
+                print(f"Calificación inicial: {self.calificacion_ini}, {pedido[i].nombre} tiene {pedido[i].calidad} de calidad "+
+                      f"con lo cual se suma 1.5 puntos, Calificación Final: {self.calificacion_fin}.")
+
             elif pedido[i].calidad <= 8:
+                self.calificacion_ini = self.calificacion
                 self.calificacion -= 3
+                self.calificacion_fin = self.calificacion
+                self.calificacion_dif = self.calificacion_ini - self.calificacion_fin
+                
+                print(f"Calificación inicial: {self.calificacion_ini}, {pedido[i].nombre} tiene {pedido[i].calidad} de calidad "+
+                      f"con lo cual se restan 3 puntos, Calificación Final: {self.calificacion_fin}.")
         
         return self.calificacion
 
